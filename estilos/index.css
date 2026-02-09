@@ -1,0 +1,426 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: url('../images/Cordoba.png'), auto;
+}
+
+body {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(235, 235, 235);
+    background-image: url('../images/fondoIndex.png');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center;
+    cursor: url('../images/Cordoba.png'), auto;
+    position: relative;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%, 
+        rgba(0, 0, 0, 0.1) 50%
+    );
+    background-size: 100% 4px;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+header {
+    background-color: rgba(11, 177, 11, 0.85);
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(10px);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.3)
+}
+
+h1 {
+    color: white;
+    font-size: 3em;
+    font-weight: bold;
+    font-family: monospace, Arial, Helvetica, sans-serif;
+}
+
+.nubes-container {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-top: 9.5rem;
+    margin-bottom: -4rem;
+    pointer-events: none
+}
+
+.nubes-container a, 
+.nubes-container .nube {
+    pointer-events: auto;
+}
+
+.nubes-container:hover .nube {
+    filter: blur(4px) brightness(0.7);
+    transition: all 0.4s ease;
+}
+
+.nubes-container .nube:hover {
+    filter: blur(0) brightness(1);
+    transform: scale(1.1);
+    z-index: 10;
+}
+
+.nube {
+    padding: 1.875rem;
+    border-radius: 50%;
+    width: 15.625rem;
+    height: 15.625rem;
+    box-shadow: 0.185rem 0.185rem 0.185rem rgba(0, 0, 0, 0.8);
+    text-align: center;
+    position: relative;
+}
+
+.nube h3 {
+    font-size: 1.5em;
+    color: rgb(11, 177, 11);
+    margin-bottom: 0.9375rem;
+    cursor: url('../images/Koki.png'), auto;
+    margin-top: 3.75rem;
+    transition: color;
+}
+
+.nube h4 {
+    font-size: 1.5em;
+    color: #ffffff;
+    margin-bottom: 0.9375rem;
+    cursor: url('../images/Koki.png'), auto;
+    margin-top: 4.375rem;
+    transition: color;
+}
+
+.nube h5 {
+    font-size: 1.5em;
+    color: rgb(11, 177, 11);
+    margin-bottom: 0.9375rem;
+    cursor: url('../images/Koki.png'), auto;
+    margin-top: 4.375rem;
+    transition: color;
+}
+
+.nube2 {
+    background-color: #ffffff;
+    font-size: 1.25rem;
+    transition: transform 0.3s ease;
+    cursor: url('../images/Koki.png'), auto;
+}
+.nube2:hover {
+    transform: scale(1.04);
+    background-color: #F0D7A9;
+}
+.nube2:hover h3 {
+    color: #9A3B2A;
+}
+
+.nube2 h3::before {
+    content: "root@sql:~$ ";
+    font-size: 0.6em;
+    color: #000000;
+    display: block; /* Pone el comando arriba del título */
+    font-family: monospace;
+}
+
+.nube3 {
+    background-color: rgb(11, 177, 11);
+    font-size: 1.25rem;
+    transition: transform 0.3s ease;
+    cursor: url('../images/Koki.png'), auto;
+}
+.nube3:hover {
+    transform: scale(1.04);
+    background-color: #9A3B2A;
+}
+.nube3:hover h4 {
+    color: #F0D7A9;
+}
+
+.nube3 h4::before {
+    content: "ping 192.168.1.1";
+    font-size: 0.6em;
+    color: #000000;
+    display: block;
+    font-family: monospace;
+}
+
+.nube4 {
+    background-color: #ffffff;
+    font-size: 1.25rem;
+    transition: transform 0.3s ease;
+    cursor: url('../images/Koki.png'), auto;
+}
+.nube4:hover {
+    transform: scale(1.04);
+    background-color: #F0D7A9;
+}
+.nube4:hover h5 {
+    color: #9A3B2A;
+}
+
+.nube4 h5::before {
+    content: "./whoami.sh";
+    font-size: 0.6em;
+    color: #000000;
+    display: block;
+    font-family: monospace;
+}
+
+.borde-letras {
+    text-shadow: 
+        -0.125rem -0.125rem 0px black, 
+        0.125rem -0.125rem 0px black, 
+        -0.125rem  0.125rem 0px black, 
+        0.125rem  0.125rem 0px black; 
+    font-weight: bold;
+    display: inline-block; /* Necesario para que el ancho funcione */
+    overflow: hidden;      /* Oculta las letras antes de escribirlas */
+    white-space: nowrap;   /* Obliga a que esté en una sola línea */
+    border-right: 2px solid white; /* El cursor blanco */
+    width: 0;
+    animation: 
+        escribir 3s steps(14) forwards, 
+        parpadeo .75s step-end 6 forwards;
+}
+
+@keyframes escribir {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes parpadeo {
+    from, to { border-color: transparent }
+    50% { border-color: white }
+}
+
+section {
+  margin-top: 1.875rem;
+}
+
+.derecha {
+    text-align: right;
+    font-size: 0.9375rem;
+}
+
+.logo img {
+    height: 3.75rem;
+    width: auto;
+    cursor: url('../images/Koki.png'), auto;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    cursor: url('../images/Cordoba.png'), auto;
+}
+
+.casa img {
+    cursor: url('../images/Koki.png'), auto;
+    height: 2.5rem;
+    width: auto;
+}
+
+.lnk img {
+    cursor: url('../images/Koki.png'), auto;
+    height: 2.5rem;
+    width: auto;
+}
+
+.footer {
+    background-size: cover;
+    background-position: center;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 900;
+    margin-top: 0rem
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 4rem;
+    text-align: center;
+    padding: 1.25rem 0;
+    background-image: url('../images/banderaCrdb.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.overlay p {
+    color: white;
+    font-size: 1.125rem;
+    margin: 0;
+}
+
+.junta img {
+    height: 3.75rem;
+    width: auto;
+    cursor: url('../images/Koki.png'), auto;
+}
+
+.rss img, .atom img {
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    opacity: 0.85;
+}
+
+.rss img {
+    height: 1.2rem;
+    width: auto;
+    cursor: url('../images/Koki.png'), auto;
+    position: relative;
+}
+
+.rss:hover img {
+    opacity: 1;
+    box-shadow: 0 0 15px #ee802f, 0 0 30px #ee802f; 
+}
+
+.atom img {
+    height: 1.2rem;
+    width: auto;
+    cursor: url('../images/Koki.png'), auto;
+    position: relative;
+}
+
+.atom:hover img {
+    opacity: 1;
+    box-shadow: 0 0 15px #ee802f, 0 0 30px #ee802f; 
+}
+
+.RssAtom {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+}
+
+.MdnJnt {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.CsLnkdn {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.spidey {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 0rem;
+    padding: 2rem 0;
+    min-height: 350px;
+}
+
+.contenedor-spidey {
+    position: relative;
+    width: 150px;
+    height: 225px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contenedor-spidey img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 0.5s ease;
+}
+
+.spideyNsld {
+    opacity: 1;
+    z-index: 1;
+}
+
+.spideySld {
+    opacity: 0;
+    z-index: 2;
+}
+
+.contenedor-spidey:hover .spideyNsld {
+    opacity: 0;
+}
+
+.contenedor-spidey:hover .spideySld {
+    opacity: 1;
+}
+
+.contenedor-spidey:hover::after {
+    content: "Córdoba de mi alma...";
+    position: absolute;
+    bottom: -40px;
+    right: -20px;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 2px solid black;
+    font-weight: bold;
+    font-size: 14px;
+    color: black;
+    white-space: nowrap;
+    z-index: 100;
+    box-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+    animation: popBocadillo 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.contenedor-spidey:hover::before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    right: 70px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid black;
+    z-index: 100;
+}
+
+@keyframes popBocadillo {
+    from { opacity: 0; transform: scale(0.5) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgb(11, 177, 11); 
+    border: 2px solid #000000; 
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(235, 235, 235); 
+    border-radius: 5px;
+    border: 3px solid rgb(11, 177, 11); 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #e0e0e0;
+}
+
